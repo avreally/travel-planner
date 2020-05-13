@@ -57,3 +57,6 @@ const updateUI = async () => {
         console.log("error", error);
     }
 }
+
+// Example of exported function
+// export { functionName }
