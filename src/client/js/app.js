@@ -1,29 +1,46 @@
+import { differenceInDays } from 'date-fns';
+
 /* Global Variables */
 let baseURLGeoNames = 'http://api.geonames.org/searchJSON?maxRows=1&username=valeriia&name=';
 
-// let apiKey = '';
+let baseURLWeatherbit = 'http://api.weatherbit.io/v2.0/forecast/daily?';
+let apiKeyWeatherbit = '4f64fed98275458e9ed0a797ec81774e';
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 
 document.getElementById('get-info').addEventListener('click', performAction);
 
-// geoNames
+// geoNames and weatherbit
 function performAction(e) {
+	//Countdown
+	const departure = document.getElementById('departure').value;
+	// console.log(departure);
+	const daysLeft = differenceInDays(new Date(departure), Date.now());
+	// console.log(daysLeft);
+	//
 	const destination = document.getElementById('destination').value;
-	getData(baseURLGeoNames, destination)
-		.then((allData) => {
-			postData('/addData', {
-				country: allData.main.temp,
-				date: newDate,
-				userResponse: document.getElementById('departure').value
-			});
-		})
-		.then(() => updateUI());
+	getData(baseURLGeoNames, destination).then((allData) => {
+		console.log(allData);
+		console.log(allData.geonames[0].countryName);
+		const countryName = allData.geonames[0].countryName;
+		const lat = allData.geonames[0].lat;
+		const lng = allData.geonames[0].lng;
+		getData(baseURLWeatherbit, `key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`)
+			.then((weatherData) => {
+				console.log(weatherData);
+				// postData('/addData', {
+				// 	country: allData.country,
+				// 	date: newDate,
+				// 	userResponse: document.getElementById('departure').value
+				// });
+			})
+			.then(() => updateUI());
+	});
 }
 
-const getData = async (url, destination) => {
-	const response = await fetch(url + destination);
+const getData = async (url, parameters) => {
+	const response = await fetch(url + parameters);
 	try {
 		const allData = await response.json();
 		return allData;
