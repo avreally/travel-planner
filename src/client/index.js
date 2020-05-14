@@ -1,4 +1,5 @@
-import './styles/style.scss'
+import './styles/style.scss';
+import './js/app';
 
 // Examples of imported functions
 // import { checkForName } from './js/nameChecker'
@@ -6,15 +7,14 @@ import './styles/style.scss'
 
 // console.log(checkForName);
 
-alert('OK!')
+// alert('OK!')
 
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').then(registration => {
-            console.log('SW registered: ', registration);
-        }).catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-        });
-    });
-}
+// if ('serviceWorker' in navigator) {
+//     window.addEventListener('load', () => {
+//         navigator.serviceWorker.register('/service-worker.js').then(registration => {
+//             console.log('SW registered: ', registration);
+//         }).catch(registrationError => {
+//             console.log('SW registration failed: ', registrationError);
+//         });
+//     });
+// }

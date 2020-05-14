@@ -1,111 +1,126 @@
+* {
+	box-sizing: border-box;
+}
+
+html,
 body {
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+	height: 100%;
 }
 
-#app{
-    display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
-    justify-content: center;
-    grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+body {
+	background: #d4f4ff;
+	font-family: 'Oxygen', sans-serif;
+	margin: 0;
 }
 
-.holder{
-
+#app {
+	display: grid;
+	grid-auto-rows: minmax(120px, auto);
+	color: #0b428c;
+	justify-content: center;
+	grid-gap: 1em;
+	font-size: 20px;
+	font-family: 'Oxygen', sans-serif;
 }
 
-.entry{
-    background: rgba(59, 74, 107, .4);
+.holder {
 }
 
-#entryHolder{
-
+.entry {
+	background: #3b4a6b66;
 }
 
-#date{
-
+#entryHolder {
 }
 
-#temp{
-
+#date {
 }
 
-#content{
+#temp {
+}
 
+#content {
 }
 
 .headline {
-
+	font-size: 44px;
+	text-align: center;
+	padding: 20px;
 }
-.title{
+.title {
+}
 
+.feel {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
-    font-size: 27px;
+label {
+	display: block;
+	font-size: 27px;
 }
 
-input{
-    display:block;
-    height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
+input {
+	display: block;
+	height: 60px;
+	width: 320px;
+	background: #ffffff;
+	color: #303030;
+	font-size: 20px;
+	font-family: 'Oxygen', sans-serif;
+	border: none;
 }
 
-button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
-}
-h1{
-    font-size: 36px;
+button {
+	width: 200px;
+	height: 50px;
+	background: #fffd95;
+	color: #303030;
+	font-size: 20px;
+	font-family: 'Oxygen', sans-serif;
+	border: none;
+	box-shadow: 2px 4px 5px #444;
+	margin-top: 15px;
 }
 
-textarea{
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+button:active {
+	background-color: #dad67d;
+}
+
+h1 {
+	font-size: 36px;
+}
+
+textarea {
+	background: #ffffff;
+	color: #303030;
+	font-size: 20px;
+	font-family: 'Oxygen', sans-serif;
 }
 /* Reset style for HTML element on active to have no border*/
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+	outline: none;
 }
 /* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+::placeholder {
+	/* Firefox, Chrome, Opera */
+	color: #303030;
+	font-family: 'Oxygen', sans-serif;
+}
 
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #303030;
+	font-family: 'Oxygen', sans-serif;
+}
 
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: #303030;
+	font-family: 'Oxygen', sans-serif;
+}
