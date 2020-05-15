@@ -5,38 +5,60 @@ let baseURLGeoNames = 'http://api.geonames.org/searchJSON?maxRows=1&username=val
 
 let baseURLWeatherbit = 'http://api.weatherbit.io/v2.0/forecast/daily?';
 let apiKeyWeatherbit = '4f64fed98275458e9ed0a797ec81774e';
+
+let baseURLPixabay = 'https://pixabay.com/api/?image_type=photo&category=places&q=';
+let apiKeyPixabay = '6315616-d5cb7351229c7679827eaf034';
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 
 document.getElementById('get-info').addEventListener('click', performAction);
 
-// geoNames and weatherbit
+// geoNames
 function performAction(e) {
 	//Countdown
-	const departure = document.getElementById('departure').value;
-	// console.log(departure);
-	const daysLeft = differenceInDays(new Date(departure), Date.now());
+	const departureDate = document.getElementById('departure-date').value;
+	// console.log(departureDate);
+	const daysLeft = differenceInDays(new Date(departureDate), Date.now());
 	// console.log(daysLeft);
 	//
 	const destination = document.getElementById('destination').value;
-	getData(baseURLGeoNames, destination).then((allData) => {
-		console.log(allData);
-		console.log(allData.geonames[0].countryName);
-		const countryName = allData.geonames[0].countryName;
-		const lat = allData.geonames[0].lat;
-		const lng = allData.geonames[0].lng;
-		getData(baseURLWeatherbit, `key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`)
-			.then((weatherData) => {
+	getData(baseURLGeoNames, destination)
+		.then((allData) => {
+			console.log(allData);
+			console.log(allData.geonames[0].countryName);
+			const countryName = allData.geonames[0].countryName;
+			const lat = allData.geonames[0].lat;
+			const lng = allData.geonames[0].lng;
+			// weatherbit
+			getData(baseURLWeatherbit, `key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`).then((weatherData) => {
 				console.log(weatherData);
 				// postData('/addData', {
 				// 	country: allData.country,
 				// 	date: newDate,
-				// 	userResponse: document.getElementById('departure').value
+				// 	userResponse: document.getElementById('departure-date').value
 				// });
-			})
-			.then(() => updateUI());
-	});
+			});
+			// pixabay
+			getData(baseURLPixabay, `${destination}&key=${apiKeyPixabay}`).then((pictureData) => {
+				console.log(pictureData);
+				// Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
+				if (pictureData.totalHits > 0) {
+					const locationPhoto = pictureData.hits[0].webformatURL;
+					// now it is a link and we need a picture
+					console.log(locationPhoto);
+				} else {
+					console.log('No picture of city found');
+					getData(baseURLPixabay, `${countryName}&key=${apiKeyPixabay}`).then((pictureDataCountry) => {
+						console.log(pictureDataCountry);
+						const countryPhoto = pictureDataCountry.hits[0].webformatURL;
+						// now it is a link and we need a picture
+						console.log(countryPhoto);
+					});
+				}
+			});
+		})
+		.then(() => updateUI());
 }
 
 const getData = async (url, parameters) => {
