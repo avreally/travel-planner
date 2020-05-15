@@ -10,13 +10,9 @@ let apiKeyWeatherbit = '4f64fed98275458e9ed0a797ec81774e';
 let baseURLPixabay = 'https://pixabay.com/api/?image_type=photo&category=places&q=';
 let apiKeyPixabay = '6315616-d5cb7351229c7679827eaf034';
 
-// Move to index.js
-document.getElementById('get-info').addEventListener('click', performAction);
-
-// Create object with all data
+// Object with all data
 let primaryData;
 
-// Export performAction to index.js
 function performAction(e) {
 	primaryData = {
 		temperature: '',
@@ -31,13 +27,21 @@ function performAction(e) {
 	};
 	// Countdown
 	const departureDate = document.getElementById('departure-date').value;
-	// console.log(`Departure date: ${departureDate}`);
+	if (departureDate === '') {
+		alert('Date is not specified');
+		return;
+	}
+	console.log(`Departure date: ${departureDate}`);
 	primaryData.departureDate = departureDate;
 	const daysLeft = differenceInDays(new Date(departureDate), Date.now());
 	// console.log(`Days left: ${daysLeft}`);
 	primaryData.daysLeft = daysLeft;
 	// GeoNames API
 	const destination = document.getElementById('destination').value;
+	if (destination === '') {
+		alert('Location is not specified');
+		return;
+	}
 	primaryData.destination = destination;
 	getData(baseURLGeoNames, destination)
 		.then(async (allData) => {
@@ -153,11 +157,11 @@ const updateUI = () => {
 
 	if (primaryData.temperatureMax !== '') {
 		let temperatureMax = document.createElement('div');
-		temperatureMax.innerText = 'Temperature, ℃: ' + primaryData.temperatureMax;
+		temperatureMax.innerText = 'Temperature, max ℃: ' + primaryData.temperatureMax;
 		results.appendChild(temperatureMax);
 
 		let temperatureMin = document.createElement('div');
-		temperatureMin.innerText = 'Temperature, ℃: ' + primaryData.temperatureMin;
+		temperatureMin.innerText = 'Temperature, min ℃: ' + primaryData.temperatureMin;
 		results.appendChild(temperatureMin);
 	}
 
@@ -166,5 +170,5 @@ const updateUI = () => {
 	results.appendChild(weatherDescription);
 };
 
-// Example of exported function
-// export { performAction(e) }
+// Export performAction to index.js
+export { performAction };

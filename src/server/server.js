@@ -20,34 +20,17 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static('dist'));
 
-
 // Setup Server
 const port = 8000;
 const server = app.listen(port, listening);
 
 function listening() {
-    console.log(`server is running on localhost:${port}`);
+	console.log(`server is running on localhost:${port}`);
 }
 
-app.get('/getData', function (request, response) {
-    response.send(projectData);
-});
-
-app.post('/addData', addData);
-
-function addData(request, response) {
-    let newData = request.body;
-    let newEntry = {
-        temp: newData.temp,
-        date: newData.date,
-        userResponse: newData.userResponse
-    }
-    projectData = newEntry;
-}
-
-// Update your server file. 
+// Update your server file.
 // Change the home route to use the index file from dist.
 // Lesson 2.13
-app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
+app.get('/', function(req, res) {
+	res.sendFile('dist/index.html');
 });

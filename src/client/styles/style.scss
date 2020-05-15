@@ -11,7 +11,6 @@ body {
 	background: #d4f4ff;
 	font-family: 'Oxygen', sans-serif;
 	margin: 0;
-	padding: 10px;
 }
 
 #app {
@@ -22,6 +21,9 @@ body {
 	grid-gap: 1em;
 	font-size: 20px;
 	font-family: 'Oxygen', sans-serif;
+	max-width: 350px;
+	margin: 0 auto;
+	padding: 10px;
 }
 
 #results {
@@ -34,7 +36,6 @@ body {
 }
 
 .pic {
-	max-width: 350px;
 	width: 100%;
 	margin-bottom: 10px;
 }
@@ -45,7 +46,6 @@ body {
 
 .headline {
 	font-size: 44px;
-	// text-align: center;
 	padding-top: 20px;
 }
 

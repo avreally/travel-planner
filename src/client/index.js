@@ -1,13 +1,8 @@
 import './styles/style.scss';
-import './js/app';
+import { performAction } from './js/app';
 
-// Examples of imported functions
-// import { checkForName } from './js/nameChecker'
-// import { handleSubmit } from './js/formHandler'
-
-// console.log(checkForName);
-
-// alert('OK!')
+// Moved from app.js
+document.getElementById('get-info').addEventListener('click', performAction);
 
 // if ('serviceWorker' in navigator) {
 //     window.addEventListener('load', () => {
