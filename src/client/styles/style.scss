@@ -11,6 +11,7 @@ body {
 	background: #d4f4ff;
 	font-family: 'Oxygen', sans-serif;
 	margin: 0;
+	padding: 10px;
 }
 
 #app {
@@ -23,6 +24,21 @@ body {
 	font-family: 'Oxygen', sans-serif;
 }
 
+#results {
+	display: grid;
+	grid-auto-rows: minmax(35px, auto);
+	justify-content: center;
+	grid-gap: 5px;
+	font-family: 'Oxygen', sans-serif;
+	color: #303030;
+}
+
+.pic {
+	max-width: 350px;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
 .holder {
 }
 
@@ -30,24 +46,10 @@ body {
 	background: #3b4a6b66;
 }
 
-#entryHolder {
-}
-
-#date {
-}
-
-#temp {
-}
-
-#content {
-}
-
 .headline {
 	font-size: 44px;
 	text-align: center;
 	padding: 20px;
-}
-.title {
 }
 
 .feel {
@@ -65,7 +67,7 @@ label {
 input {
 	display: block;
 	height: 60px;
-	width: 320px;
+	width: 300px;
 	background: #ffffff;
 	color: #303030;
 	font-size: 20px;
@@ -83,6 +85,10 @@ button {
 	border: none;
 	box-shadow: 2px 4px 5px #444;
 	margin-top: 15px;
+}
+
+button:hover {
+	background-color: #ffea2a;
 }
 
 button:active {

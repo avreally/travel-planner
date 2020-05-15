@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Travel Planner</title>
   <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -16,22 +15,14 @@
     </div>
     <div class="holder zip">
       <label for="destination">Destination:</label>
-      <input type="text" id="destination" placeholder="Enter location" value="London">
+      <input type="text" id="destination" placeholder="Enter location">
     </div>
     <div class="holder feel">
       <label for="departure-date">Departure date:</label>
-      <input type="date" id="departure-date" placeholder="MM/DD/YYYY" value="05/20/2020">
-      <!-- <textarea class="myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea> -->
+      <input type="date" id="departure-date">
       <button id="get-info" type="submit">Get info</button>
     </div>
-    <!-- <div class="holder entry">
-      <div class="title">Most Recent Entry</div>
-      <div id="entryHolder">
-        <div id="date"></div>
-        <div id="temp"></div>
-        <div id="content"></div>
-      </div>
-    </div> -->
+    <div class="holder" id="results"></div>
   </div>
 
 </body>
