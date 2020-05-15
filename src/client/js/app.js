@@ -31,7 +31,7 @@ function performAction(e) {
 		alert('Date is not specified');
 		return;
 	}
-	console.log(`Departure date: ${departureDate}`);
+	// console.log(`Departure date: ${departureDate}`);
 	primaryData.departureDate = departureDate;
 	const daysLeft = differenceInDays(new Date(departureDate), Date.now());
 	// console.log(`Days left: ${daysLeft}`);
@@ -91,7 +91,7 @@ function performAction(e) {
 					// console.log(locationPhoto);
 					primaryData.pictureURL = locationPhoto;
 				} else {
-					console.log('No picture of city found');
+					// console.log('No picture of city found');
 					await getData(
 						baseURLPixabay,
 						`${countryName}&key=${apiKeyPixabay}`
@@ -103,7 +103,7 @@ function performAction(e) {
 							// console.log(countryPhoto);
 							primaryData.pictureURL = countryPhoto;
 						} else {
-							console.log('No picture of country found');
+							// console.log('No picture of country found');
 							await getData(baseURLPixabay, `travel&key=${apiKeyPixabay}`).then((pictureDataMock) => {
 								// console.log(pictureDataMock);
 								const mockPhoto = pictureDataMock.hits[0].webformatURL;
@@ -171,4 +171,4 @@ const updateUI = () => {
 };
 
 // Export performAction to index.js
-export { performAction };
+export { performAction, getData };

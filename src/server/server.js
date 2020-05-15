@@ -1,6 +1,3 @@
-// Setup empty JS object to act as endpoint for all routes
-projectData = {};
-
 // Require Express to run server and routes
 const express = require('express');
 
@@ -21,16 +18,20 @@ app.use(cors());
 app.use(express.static('dist'));
 
 // Setup Server
-const port = 8000;
-const server = app.listen(port, listening);
+if (process.env.NODE_ENV !== 'test') {
+	const port = 8000;
+	const server = app.listen(port, listening);
 
-function listening() {
-	console.log(`server is running on localhost:${port}`);
+	function listening() {
+		console.log(`server is running on localhost:${port}`);
+	}
 }
 
-// Update your server file.
-// Change the home route to use the index file from dist.
-// Lesson 2.13
-app.get('/', function(req, res) {
+function getRoot(req, res) {
 	res.sendFile('dist/index.html');
-});
+}
+app.get('/', getRoot);
+
+module.exports = {
+	getRoot
+};
