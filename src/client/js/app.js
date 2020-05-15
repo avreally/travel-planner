@@ -9,9 +9,6 @@ let apiKeyWeatherbit = '4f64fed98275458e9ed0a797ec81774e';
 
 let baseURLPixabay = 'https://pixabay.com/api/?image_type=photo&category=places&q=';
 let apiKeyPixabay = '6315616-d5cb7351229c7679827eaf034';
-// Create a new date instance dynamically with JS
-// let d = new Date();
-// let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 
 // Move to index.js
 document.getElementById('get-info').addEventListener('click', performAction);
@@ -20,7 +17,6 @@ document.getElementById('get-info').addEventListener('click', performAction);
 let primaryData;
 
 // Export performAction to index.js
-// geoNames
 function performAction(e) {
 	primaryData = {
 		temperature: '',
@@ -33,63 +29,62 @@ function performAction(e) {
 		daysLeft: '',
 		pictureURL: ''
 	};
-	//Countdown
+	// Countdown
 	const departureDate = document.getElementById('departure-date').value;
-	console.log(`Departure date: ${departureDate}`);
+	// console.log(`Departure date: ${departureDate}`);
 	primaryData.departureDate = departureDate;
 	const daysLeft = differenceInDays(new Date(departureDate), Date.now());
-	console.log(`Days left: ${daysLeft}`);
+	// console.log(`Days left: ${daysLeft}`);
 	primaryData.daysLeft = daysLeft;
-	//
+	// GeoNames API
 	const destination = document.getElementById('destination').value;
 	primaryData.destination = destination;
 	getData(baseURLGeoNames, destination)
 		.then(async (allData) => {
-			console.log(allData);
-			console.log(allData.geonames[0].countryName);
+			// console.log(allData);
+			// console.log(allData.geonames[0].countryName);
 			const countryName = allData.geonames[0].countryName;
 			primaryData.countryName = countryName;
 			const lat = allData.geonames[0].lat;
 			const lng = allData.geonames[0].lng;
-			// weatherbit
+			// Weatherbit API
 			if (daysLeft <= 7) {
 				await getData(
 					baseURLWeatherbitCurrent,
 					`key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`
 				).then((weatherDataCurrent) => {
-					console.log('Current weather:', weatherDataCurrent);
+					// console.log('Current weather:', weatherDataCurrent);
 					const temperature = weatherDataCurrent.data[0].temp;
 					const weatherDescription = weatherDataCurrent.data[0].weather.description;
 					primaryData.temperature = temperature;
 					primaryData.weatherDescription = weatherDescription;
-					console.log('Temperature:', temperature);
-					console.log('Weather:', weatherDescription);
+					// console.log('Temperature:', temperature);
+					// console.log('Weather:', weatherDescription);
 				});
 			} else {
 				await getData(
 					baseURLWeatherbitDaily,
 					`key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`
 				).then((weatherDataDaily) => {
-					console.log('Daily weather:', weatherDataDaily);
+					// console.log('Daily weather:', weatherDataDaily);
 					const temperatureMax = weatherDataDaily.data[0].max_temp;
 					const temperatureMin = weatherDataDaily.data[0].min_temp;
 					const weatherDescriptionDaily = weatherDataDaily.data[0].weather.description;
-					console.log('Temperature Max:', temperatureMax);
-					console.log('Temperature Min:', temperatureMin);
-					console.log('Weather:', weatherDescriptionDaily);
+					// console.log('Temperature Max:', temperatureMax);
+					// console.log('Temperature Min:', temperatureMin);
+					// console.log('Weather:', weatherDescriptionDaily);
 					primaryData.temperatureMax = temperatureMax;
 					primaryData.temperatureMin = temperatureMin;
 					primaryData.weatherDescription = weatherDescriptionDaily;
 				});
 			}
-			// pixabay
+			// pixabay API
 			await getData(baseURLPixabay, `${destination}&key=${apiKeyPixabay}`).then(async (pictureData) => {
-				console.log(pictureData);
-				// Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
+				// console.log(pictureData);
+				// Pull in an image for the country from Pixabay API when the entered location brings up no results.
 				if (pictureData.totalHits > 0) {
 					const locationPhoto = pictureData.hits[0].webformatURL;
-					// now it is a link and we need a picture
-					console.log(locationPhoto);
+					// console.log(locationPhoto);
 					primaryData.pictureURL = locationPhoto;
 				} else {
 					console.log('No picture of city found');
@@ -97,19 +92,18 @@ function performAction(e) {
 						baseURLPixabay,
 						`${countryName}&key=${apiKeyPixabay}`
 					).then(async (pictureDataCountry) => {
-						console.log(pictureDataCountry);
+						// console.log(pictureDataCountry);
+						// Pull in a travel image from Pixabay API when trere is no picture of country.
 						if (pictureDataCountry.totalHits > 0) {
 							const countryPhoto = pictureDataCountry.hits[0].webformatURL;
-							// now it is a link and we need a picture
-							console.log(countryPhoto);
+							// console.log(countryPhoto);
 							primaryData.pictureURL = countryPhoto;
 						} else {
 							console.log('No picture of country found');
 							await getData(baseURLPixabay, `travel&key=${apiKeyPixabay}`).then((pictureDataMock) => {
-								console.log(pictureDataMock);
+								// console.log(pictureDataMock);
 								const mockPhoto = pictureDataMock.hits[0].webformatURL;
-								// now it is a link and we need a picture
-								console.log(mockPhoto);
+								// console.log(mockPhoto);
 								primaryData.pictureURL = mockPhoto;
 							});
 						}
@@ -170,9 +164,7 @@ const updateUI = () => {
 	let weatherDescription = document.createElement('div');
 	weatherDescription.innerText = 'Weather conditions: ' + primaryData.weatherDescription;
 	results.appendChild(weatherDescription);
-
-	// results = primaryData;
 };
 
 // Example of exported function
-// export { functionName }
+// export { performAction(e) }
