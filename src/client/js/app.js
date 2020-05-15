@@ -51,9 +51,18 @@ function performAction(e) {
 					console.log('No picture of city found');
 					getData(baseURLPixabay, `${countryName}&key=${apiKeyPixabay}`).then((pictureDataCountry) => {
 						console.log(pictureDataCountry);
-						const countryPhoto = pictureDataCountry.hits[0].webformatURL;
-						// now it is a link and we need a picture
-						console.log(countryPhoto);
+						if (pictureDataCountry.totalHits > 0) {
+							const countryPhoto = pictureDataCountry.hits[0].webformatURL;
+							// now it is a link and we need a picture
+							console.log(countryPhoto);
+						} else {
+							console.log('No picture of country found');
+							getData(baseURLPixabay, `travel&key=${apiKeyPixabay}`).then((pictureDataMock) => {
+								console.log(pictureDataMock);
+								const mockPhoto = pictureDataMock.hits[0].webformatURL;
+								console.log(mockPhoto);
+							});
+						}
 					});
 				}
 			});
