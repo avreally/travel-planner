@@ -20,18 +20,21 @@
       <div class="search">
         <div class="destination">
           <label for="destination">Where:</label>
-          <input type="text" id="destination" placeholder="Enter location" value="Berlin">
+          <input type="text" id="destination" placeholder="Enter location">
         </div>
         <div class="departure">
           <label for="departure-date">When:</label>
-          <input type="date" id="departure-date" placeholder="yyyy/mm/dd" value="10.10.2020">
+          <input type="date" id="departure-date" placeholder="yyyy/mm/dd">
         </div>
         <div>
           <button id="get-info" type="submit">Get info</button>
         </div>
       </div>
       <hr>
-      <div id="results"></div>
+      <div id="results">
+        <div id="results-pic"></div>
+        <div id="results-text"></div>
+      </div>
       <div class="pictures">
         <img class="photo" src="images/berlin.jpeg" alt="berlin">
         <img class="photo" src="images/amsterdam.jpeg" alt="amsterdam">
