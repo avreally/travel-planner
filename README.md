@@ -1,7 +1,7 @@
 # Travel Planner Project
 
 ## About
-This is a study project which was created during studying Front-End Developer Nanodegree at UDacity.
+This is a study project which was created during studying Front-End Developer Nanodegree at Udacity.
 Travel Planner allows user to enter location and date to get information about weather conditions, temperature and days left before the trip.
 User can also see the picture of entered location.
 
