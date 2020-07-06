@@ -25,7 +25,7 @@ body {
     margin: 0 auto;
     padding: 10px;
     grid-template-columns: 100px 1fr 100px;
-    grid-template-rows: 100px 100px auto 100px;
+    grid-template-rows: 100px 100px minmax(600px, 1fr) 100px;
     grid-template-areas: "header header header" "description description description" ". center ."
         "footer footer footer";
 }
@@ -35,9 +35,20 @@ body {
     flex-direction: row;
     justify-content: center;
     font-family: 'Oxygen', sans-serif;
-    color: #303030;
-    grid-area: center;
+	color: #303030;
+    background: #e8f0ff;
+	border-radius: 4px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    // grid-area: center;
     // margin: 40px;
+}
+
+.results-back {
+    display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 40px;
+	// padding: 30px;
 }
 
 #results-text {
@@ -85,9 +96,12 @@ body {
     grid-area: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
     background: #e8f0ff;
-    border-radius: 40px;
+    // background-image: url("https://cdn.pixabay.com/photo/2015/03/26/10/38/blue-691718_1280.jpg");
+    background-image: linear-gradient(to bottom, #e8f0ff, transparent), url(../../../images/amsterdam.jpg);
+    background-size: cover;
+    border-radius: 10px;
     color: #303030;
 }
 
@@ -96,27 +110,27 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
-    margin: 40px;
+	margin: 40px;
+	padding: 30px;
 }
 
-hr {
-    border: 0.5px solid #7c8b8d;
-    width: 50%;
-}
+// hr {
+//     border: 0.5px solid #7c8b8d;
+//     width: 50%;
+// }
 
-.pictures {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 40px;
-}
+// .pictures {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-evenly;
+//     margin: 40px;
+// }
 
-.photo {
-    width: 300px;
-    // height: 100%;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-}
+// .photo {
+//     width: 300px;
+//     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//     border-radius: 4px;
+// }
 
 .footer {
     grid-area: footer;

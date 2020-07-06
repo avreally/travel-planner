@@ -7,8 +7,10 @@ let baseURLWeatherbitCurrent = 'http://api.weatherbit.io/v2.0/current?';
 let baseURLWeatherbitDaily = 'http://api.weatherbit.io/v2.0/forecast/daily?';
 let apiKeyWeatherbit = '4f64fed98275458e9ed0a797ec81774e';
 
-let baseURLPixabay = 'https://pixabay.com/api/?image_type=photo&category=places&q=';
+let baseURLPixabay = 'https://pixabay.com/api/?image_type=photo&category=buildings&q=';
 let apiKeyPixabay = '6315616-d5cb7351229c7679827eaf034';
+
+// red,orange,yellow,green,turquoise,blue,lilac,pink,brown,white
 
 // Object with all data
 let primaryData;
