@@ -8,20 +8,17 @@ body {
 }
 
 body {
-    background: #023e8a;
+    background: #017C9B;
     font-family: 'Oxygen', sans-serif;
     margin: 0;
 }
 
 #app {
     display: grid;
-    // grid-auto-rows: minmax(120px, auto);
     color: #ffffff;
     font-size: 20px;
-    // justify-content: center;
     grid-gap: 1em;
     font-family: 'Oxygen', sans-serif;
-    // max-width: 350px;
     margin: 0 auto;
     padding: 10px;
     grid-template-columns: 100px 1fr 100px;
@@ -36,11 +33,11 @@ body {
     justify-content: center;
     font-family: 'Oxygen', sans-serif;
 	color: #303030;
-    background: #e8f0ff;
+    background: #ffffffcc;
 	border-radius: 4px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    // grid-area: center;
-    // margin: 40px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
 .results-back {
@@ -48,7 +45,6 @@ body {
 	flex-direction: row;
 	justify-content: center;
 	margin: 40px;
-	// padding: 30px;
 }
 
 #results-text {
@@ -59,7 +55,7 @@ body {
 .pic {
     width: 400px;
     height: 300px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
     margin: 40px;
     object-fit: cover;
@@ -79,7 +75,6 @@ body {
 
 .headline {
     font-size: 44px;
-    // padding-top: 20px;
     text-transform: uppercase;
     grid-area: header;
     justify-self: center;
@@ -96,13 +91,11 @@ body {
     grid-area: center;
     display: flex;
     flex-direction: column;
-    // justify-content: space-evenly;
-    background: #e8f0ff;
-    // background-image: url("https://cdn.pixabay.com/photo/2015/03/26/10/38/blue-691718_1280.jpg");
-    background-image: linear-gradient(to bottom, #e8f0ff, transparent), url(../../../images/amsterdam.jpg);
+    background-image: linear-gradient(to bottom, #fff, #ffffff00), url(../../../images/beach.jpg);
     background-size: cover;
     border-radius: 10px;
     color: #303030;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 }
 
 .search {
@@ -114,46 +107,16 @@ body {
 	padding: 30px;
 }
 
-// hr {
-//     border: 0.5px solid #7c8b8d;
-//     width: 50%;
-// }
-
-// .pictures {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-evenly;
-//     margin: 40px;
-// }
-
-// .photo {
-//     width: 300px;
-//     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-//     border-radius: 4px;
-// }
-
 .footer {
     grid-area: footer;
     justify-self: center;
     align-self: center;
 }
 
-// .departure {
-// 	display: flex;
-// 	flex-direction: column;
-// 	justify-content: space-evenly;
-// grid-area: center;
-// }
-
-// .destination {
-//
-// }
-
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label {
     display: block;
     margin: 0 0 0 20px;
-    // font-size: 27px;
 }
 
 input {
@@ -164,8 +127,8 @@ input {
     color: #303030;
     font-size: 20px;
     font-family: 'Oxygen', sans-serif;
-    border: 1px solid #7c8b8d;
-    // box-sizing: border-box;
+    border: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
     margin: 15px 20px 0 20px;
     padding: 5px 10px 5px 10px;
@@ -179,7 +142,6 @@ button {
     font-size: 20px;
     font-family: 'Oxygen', sans-serif;
     border: none;
-    // box-shadow: 2px 4px 5px #444;
     margin: 15px 20px 0 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
