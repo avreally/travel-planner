@@ -2,7 +2,7 @@ import './styles/style.scss';
 import { performAction } from './js/app';
 
 // Moved from app.js
-document.getElementById('get-info').addEventListener('click', performAction);
+document.getElementById('main-form').addEventListener('submit', performAction);
 
 // if ('serviceWorker' in navigator) {
 // 	window.addEventListener('load', () => {

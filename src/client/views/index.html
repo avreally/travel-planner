@@ -18,17 +18,19 @@
     </div>
     <div class="main">
       <div class="search">
-        <div class="destination">
-          <label for="destination">Where:</label>
-          <input type="text" id="destination" placeholder="Enter location">
-        </div>
-        <div class="departure">
-          <label for="departure-date">When:</label>
-          <input type="date" id="departure-date" placeholder="yyyy/mm/dd">
-        </div>
-        <div>
-          <button id="get-info" type="submit">Get info</button>
-        </div>
+        <form id="main-form">
+          <div class="destination">
+            <label for="destination">Where:</label>
+            <input type="text" required id="destination" placeholder="Enter location" />
+          </div>
+          <div class="departure">
+            <label for="departure-date">When:</label>
+            <input type="date" required="required" id="departure-date" placeholder="yyyy/mm/dd">
+          </div>
+          <div>
+            <button id="get-info" type="submit">Get info</button>
+          </div>
+      </form>
       </div>
       <div class="results-back">
         <div id="results">

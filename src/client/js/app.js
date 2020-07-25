@@ -14,6 +14,7 @@ let apiKeyPixabay = '6315616-d5cb7351229c7679827eaf034';
 let primaryData;
 
 function performAction(e) {
+    e.preventDefault();
     primaryData = {
         temperature: '',
         temperatureMax: '',
@@ -27,19 +28,19 @@ function performAction(e) {
     };
     // Countdown
     const departureDate = document.getElementById('departure-date').value;
-    if (departureDate === '') {
-        alert('Date is not specified');
-        return;
-    }
+    // if (departureDate === '') {
+    //     alert('Date is not specified');
+    //     return;
+    // }
     primaryData.departureDate = departureDate;
     const daysLeft = differenceInDays(new Date(departureDate), Date.now());
     primaryData.daysLeft = daysLeft;
     // GeoNames API
     const destination = document.getElementById('destination').value;
-    if (destination === '') {
-        alert('Location is not specified');
-        return;
-    }
+    // if (destination === '') {
+    //     alert('Location is not specified');
+    //     return;
+    // }
     primaryData.destination = destination;
     getData(baseURLGeoNames, destination)
         .then(async (allData) => {
