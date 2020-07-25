@@ -26,21 +26,18 @@ function performAction(e) {
         daysLeft: '',
         pictureURL: ''
     };
+
     // Countdown
     const departureDate = document.getElementById('departure-date').value;
-    // if (departureDate === '') {
-    //     alert('Date is not specified');
-    //     return;
-    // }
+
     primaryData.departureDate = departureDate;
+
     const daysLeft = differenceInDays(new Date(departureDate), Date.now());
     primaryData.daysLeft = daysLeft;
+
     // GeoNames API
     const destination = document.getElementById('destination').value;
-    // if (destination === '') {
-    //     alert('Location is not specified');
-    //     return;
-    // }
+
     primaryData.destination = destination;
     getData(baseURLGeoNames, destination)
         .then(async (allData) => {
