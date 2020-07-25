@@ -45,6 +45,7 @@ function performAction(e) {
             primaryData.countryName = countryName;
             const lat = allData.geonames[0].lat;
             const lng = allData.geonames[0].lng;
+
             // Weatherbit API
             if (daysLeft <= 7) {
                 await getData(
@@ -52,6 +53,7 @@ function performAction(e) {
                     `key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`
                 ).then((weatherDataCurrent) => {
                     const temperature = weatherDataCurrent.data[0].temp;
+                    // console.log(weatherDataCurrent);
                     const weatherDescription = weatherDataCurrent.data[0].weather.description;
                     primaryData.temperature = temperature;
                     primaryData.weatherDescription = weatherDescription;
@@ -71,7 +73,7 @@ function performAction(e) {
             }
             // pixabay API
             await getData(baseURLPixabay, `${destination}&key=${apiKeyPixabay}`).then(async (pictureData) => {
-                console.log(pictureData);
+                // console.log(pictureData);
                 // Pull in an image for the country from Pixabay API when the entered location brings up no results.
                 if (pictureData.totalHits > 0) {
                     const locationPhoto = pictureData.hits[0].webformatURL;
