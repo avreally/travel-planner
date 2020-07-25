@@ -19,23 +19,23 @@
     <div class="main">
       <!-- <div class="search"> -->
         <form id="main-form">
-          <div class="destination">
+          <div class="destination form-items">
             <label for="destination">Where:</label>
             <input type="text" id="destination" placeholder="Enter location" value="Tokyo" required />
           </div>
-          <div class="departure">
+          <div class="departure form-items">
             <label for="departure-date">When:</label>
             <input type="date" id="departure-date" placeholder="yyyy/mm/dd" required />
           </div>
-          <div>
+          <div class="form-items">
             <button id="get-info" type="submit">Get info</button>
           </div>
       </form>
       <!-- </div> -->
       <div class="results-back">
         <div id="results">
-          <div id="results-pic"></div>
-          <div id="results-text"></div>
+          <div id="results-pic" class="results-items"></div>
+          <div id="results-text" class="results-items"></div>
         </div>
       </div>
     </div>

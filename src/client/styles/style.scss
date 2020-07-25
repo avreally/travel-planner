@@ -21,15 +21,18 @@ body {
     font-family: 'Oxygen', sans-serif;
     margin: 0 auto;
     padding: 10px;
-    grid-template-columns: 100px 1fr 100px;
-    grid-template-rows: 100px 100px minmax(600px, 1fr) 100px;
-    grid-template-areas: "header header header" "description description description" ". center ."
-        "footer footer footer";
+    // grid-template-columns: 100px 1fr 100px;
+    // grid-template-rows: 100px 100px minmax(600px, 1fr) 100px;
+    // grid-template-areas: "header header header" "description description description" ". center ."
+    //     "footer footer footer";
+    grid-template-rows: auto 1fr auto;
+    place-items: center;
 }
 
 #results {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     font-family: 'Oxygen', sans-serif;
 	color: #303030;
@@ -50,6 +53,10 @@ body {
 #results-text {
     display: flex;
     flex-direction: column;
+}
+
+.results-items {
+    flex: 0 1 150px;
 }
 
 .pic {
@@ -76,21 +83,22 @@ body {
 .headline {
     font-size: 44px;
     text-transform: uppercase;
-    grid-area: header;
+    // grid-area: header;
     justify-self: center;
     align-self: center;
 }
 
 .description {
-    grid-area: description;
+    // grid-area: description;
     justify-self: center;
     align-self: center;
 }
 
 .main {
-    grid-area: center;
+    // grid-area: center;
     display: flex;
     flex-direction: column;
+    width: clamp(23ch, 50%, 46ch);
     background-image: linear-gradient(to bottom, #fff, #ffffff00), url(../../../images/beach.jpg);
     background-size: cover;
     border-radius: 10px;
@@ -101,14 +109,19 @@ body {
 #main-form {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: flex-end;
 	margin: 40px;
 	padding: 30px;
 }
 
+.form-items {
+    flex: 0 1 150px;
+}
+
 .footer {
-    grid-area: footer;
+    // grid-area: footer;
     justify-self: center;
     align-self: center;
 }
