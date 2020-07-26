@@ -11,13 +11,14 @@ body {
     background: #017C9B;
     font-family: 'Oxygen', sans-serif;
     margin: 0;
+    font-size: 20px;
 }
 
 #app {
     display: grid;
     color: #ffffff;
-    font-size: 20px;
-    grid-gap: 1em;
+    // font-size: 20px;
+    grid-gap: 2em;
     font-family: 'Oxygen', sans-serif;
     margin: 0 auto;
     padding: 10px;
@@ -27,6 +28,86 @@ body {
     //     "footer footer footer";
     grid-template-rows: auto 1fr auto;
     place-items: center;
+}
+
+.headline {
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-transform: uppercase;
+    // grid-area: header;
+    justify-self: center;
+    align-self: center;
+}
+
+.description {
+    // grid-area: description;
+    justify-self: center;
+    align-self: center;
+    font-size: clamp(1.1rem, 5vw, 1.7rem);
+}
+
+.main {
+    // grid-area: center;
+    display: flex;
+    flex-direction: column;
+    width: clamp(35ch, 80%, 100ch);
+    background-image: linear-gradient(to bottom, #fff, #ffffff00), url(../../../images/beach.jpg);
+    background-size: cover;
+    border-radius: 10px;
+    color: #303030;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+#main-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+	// margin: 40px;
+    // padding: 30px;
+    margin: 40px 0;
+    // padding: 30px 0;
+}
+
+.form-items {
+    flex: 0 1 250px;
+    margin: 15px;
+}
+
+label {
+    display: block;
+    width: 90%;
+    // margin: 0 0 0 20px;
+}
+
+input {
+    display: block;
+    height: 55px;
+    // width: 300px;
+    background: #ffffff;
+    color: #303030;
+    font-size: 20px;
+    font-family: 'Oxygen', sans-serif;
+    border: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    // margin: 15px 20px 0 20px;
+    padding: 5px 10px 5px 10px;
+    margin: 0;
+    width: 90%;
+}
+
+button {
+    width: 90%;
+    height: 55px;
+    background: #d44d5c;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: 'Oxygen', sans-serif;
+    border: none;
+    // margin: 15px 20px 0 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
 }
 
 #results {
@@ -47,7 +128,7 @@ body {
     display: flex;
 	flex-direction: row;
 	justify-content: center;
-	margin: 40px;
+	margin: 0 40px 40px 40px;
 }
 
 #results-text {
@@ -56,68 +137,31 @@ body {
 }
 
 .results-items {
-    flex: 0 1 150px;
+    flex: 0 1 350px;
+    margin: 20px;
 }
 
 .pic {
-    width: 400px;
+    // width: 400px;
     height: 300px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    max-width: 100%;
+	// box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
-    margin: 40px;
+    // margin: 40px 0;
+    padding: 20px;
     object-fit: cover;
 }
 
 .where {
-    margin: 40px;
+    margin: 20px 10px;
 }
 
 .text-entry {
-    margin: 10px 40px;
+    margin: 10px;
 }
 
 .entry {
     background: #3b4a6b66;
-}
-
-.headline {
-    font-size: 44px;
-    text-transform: uppercase;
-    // grid-area: header;
-    justify-self: center;
-    align-self: center;
-}
-
-.description {
-    // grid-area: description;
-    justify-self: center;
-    align-self: center;
-}
-
-.main {
-    // grid-area: center;
-    display: flex;
-    flex-direction: column;
-    width: clamp(23ch, 50%, 46ch);
-    background-image: linear-gradient(to bottom, #fff, #ffffff00), url(../../../images/beach.jpg);
-    background-size: cover;
-    border-radius: 10px;
-    color: #303030;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-}
-
-#main-form {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-end;
-	margin: 40px;
-	padding: 30px;
-}
-
-.form-items {
-    flex: 0 1 150px;
 }
 
 .footer {
@@ -127,38 +171,7 @@ body {
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
-label {
-    display: block;
-    margin: 0 0 0 20px;
-}
 
-input {
-    display: block;
-    height: 55px;
-    width: 300px;
-    background: #ffffff;
-    color: #303030;
-    font-size: 20px;
-    font-family: 'Oxygen', sans-serif;
-    border: none;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-    margin: 15px 20px 0 20px;
-    padding: 5px 10px 5px 10px;
-}
-
-button {
-    width: 200px;
-    height: 55px;
-    background: #d44d5c;
-    color: #ffffff;
-    font-size: 20px;
-    font-family: 'Oxygen', sans-serif;
-    border: none;
-    margin: 15px 20px 0 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-}
 
 button:hover {
     background-color: #ff5467;
@@ -168,9 +181,9 @@ button:active {
     background-color: #f25566;
 }
 
-h1 {
-    font-size: 36px;
-}
+// h1 {
+//     font-size: 36px;
+// }
 
 textarea {
     background: #ffffff;
