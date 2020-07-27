@@ -17,16 +17,18 @@ body {
 #app {
     display: grid;
     color: #ffffff;
-    grid-gap: 2em;
+    grid-gap: 1.5em;
     font-family: 'Oxygen', sans-serif;
     margin: 0 auto;
     padding: 10px;
-    grid-template-rows: auto 1fr auto;
+    // grid-template-rows: auto 1fr auto;
+    // grid-template-rows: 1fr 1fr 7fr 1fr;
+    grid-template-rows: auto auto 1fr auto;
     place-items: center;
 }
 
 .headline {
-    font-size: clamp(1.5em, 5vw, 3em);
+    font-size: clamp(1.5em, 5vw, 2em);
     text-transform: uppercase;
     justify-self: center;
     align-self: center;
@@ -35,14 +37,17 @@ body {
 .description {
     justify-self: center;
     align-self: center;
-    font-size: clamp(1em, 3vw, 1.5em);
+    font-size: clamp(1em, 2vw, 1.2em);
     text-align: center;
+    padding: 0 25px;
 }
 
 .main {
     display: flex;
     flex-direction: column;
     width: clamp(0ch, 80%, 100ch);
+    height: 100%;
+    min-height: 500px;
     background-image: linear-gradient(to bottom, #fff, #ffffff00), url(../../../images/beach.jpg);
     background-size: cover;
     background-position: center center;
@@ -57,17 +62,18 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-end;
-    margin: 30px 0;
+    margin: 20px 0 35px 0;
 }
 
 .form-items {
     flex: 0 1 250px;
-    margin: 15px;
+    margin: 0 15px;
 }
 
 label {
     display: block;
-    width: 90%;
+    width: 100%;
+    margin: 10px 0;
 }
 
 input {
@@ -95,6 +101,7 @@ button {
     border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
+    margin: 36px 0 0 0;
 }
 
 #results {
@@ -152,6 +159,7 @@ button {
     justify-self: center;
     align-self: center;
     text-align: center;
+    font-size: 18px;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
