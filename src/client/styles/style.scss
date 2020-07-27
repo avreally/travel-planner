@@ -116,6 +116,7 @@ button {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
+    padding: 20px 0;
 }
 
 .results-back {
@@ -126,14 +127,19 @@ button {
     width: 90%;
 }
 
+// #results-pic {
+//     margin: 0 20px 0 0;
+// }
+
 #results-text {
     display: flex;
     flex-direction: column;
+    // margin: 0 0 0 20px;
 }
 
 .results-items {
     flex: 1 1 300px;
-    margin: 20px;
+    margin: 0 20px;
 }
 
 .pic {
@@ -144,11 +150,13 @@ button {
 }
 
 .where {
-    margin: 10px;
+    margin: 20px 10px 5px 10px;
+    font-size: clamp(0.9em, 2vw, 1em);
 }
 
 .text-entry {
-    margin: 10px;
+    margin: 5px 10px;
+    font-size: clamp(0.9em, 2vw, 1em);
 }
 
 .entry {
