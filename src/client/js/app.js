@@ -29,7 +29,6 @@ function performAction(e) {
 
     // Countdown
     const departureDate = document.getElementById('departure-date').value;
-    console.log(departureDate);
     primaryData.departureDate = departureDate;
 
     const daysLeft = differenceInDays(new Date(departureDate), Date.now());
@@ -62,7 +61,6 @@ function performAction(e) {
                     baseURLWeatherbitDaily,
                     `key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`
                 ).then((weatherDataDaily) => {
-                    console.log(weatherDataDaily);
                     const temperatureMax = weatherDataDaily.data[0].max_temp;
                     const temperatureMin = weatherDataDaily.data[0].min_temp;
                     const weatherDescriptionDaily = weatherDataDaily.data[0].weather.description;
