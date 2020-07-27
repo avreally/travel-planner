@@ -128,12 +128,12 @@ const updateUI = () => {
 
     let destination = document.createElement('div');
     destination.classList.add('where');
-    destination.innerText = 'A trip to: ' + primaryData.destination + ', ' + primaryData.countryName;
+    destination.innerText = 'A trip to ' + primaryData.destination + ', ' + primaryData.countryName;
     resultsText.appendChild(destination);
 
     let departure = document.createElement('div');
     departure.classList.add('text-entry');
-    departure.innerText = 'When: ' + primaryData.departureDate;
+    departure.innerText = primaryData.departureDate;
     resultsText.appendChild(departure);
 
     let daysLeft = document.createElement('div');
