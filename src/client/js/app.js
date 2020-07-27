@@ -111,6 +111,9 @@ const getData = async (url, parameters) => {
 };
 
 const updateUI = () => {
+    let resultsBackground = document.getElementById('results');
+    resultsBackground.style.display = 'flex';
+
     let resultsPic = document.getElementById('results-pic');
     resultsPic.innerHTML = '';
 
