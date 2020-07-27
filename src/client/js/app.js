@@ -29,7 +29,6 @@ function performAction(e) {
 
     // Countdown
     const departureDate = document.getElementById('departure-date').value;
-
     primaryData.departureDate = departureDate;
 
     const daysLeft = differenceInDays(new Date(departureDate), Date.now());
@@ -45,6 +44,7 @@ function performAction(e) {
             primaryData.countryName = countryName;
             const lat = allData.geonames[0].lat;
             const lng = allData.geonames[0].lng;
+
             // Weatherbit API
             if (daysLeft <= 7) {
                 await getData(
@@ -71,7 +71,6 @@ function performAction(e) {
             }
             // pixabay API
             await getData(baseURLPixabay, `${destination}&key=${apiKeyPixabay}`).then(async (pictureData) => {
-                console.log(pictureData);
                 // Pull in an image for the country from Pixabay API when the entered location brings up no results.
                 if (pictureData.totalHits > 0) {
                     const locationPhoto = pictureData.hits[0].webformatURL;
@@ -109,6 +108,9 @@ const getData = async (url, parameters) => {
 };
 
 const updateUI = () => {
+    let resultsBackground = document.querySelector('.results-back');
+    resultsBackground.style.display = 'flex';
+
     let resultsPic = document.getElementById('results-pic');
     resultsPic.innerHTML = '';
 
@@ -122,12 +124,12 @@ const updateUI = () => {
 
     let destination = document.createElement('div');
     destination.classList.add('where');
-    destination.innerText = 'A trip to: ' + primaryData.destination + ', ' + primaryData.countryName;
+    destination.innerText = 'A trip to ' + primaryData.destination + ', ' + primaryData.countryName;
     resultsText.appendChild(destination);
 
     let departure = document.createElement('div');
     departure.classList.add('text-entry');
-    departure.innerText = 'When: ' + primaryData.departureDate;
+    departure.innerText = primaryData.departureDate;
     resultsText.appendChild(departure);
 
     let daysLeft = document.createElement('div');

@@ -11,141 +11,160 @@ body {
     background: #017C9B;
     font-family: 'Oxygen', sans-serif;
     margin: 0;
+    font-size: 20px;
 }
 
 #app {
     display: grid;
     color: #ffffff;
-    font-size: 20px;
-    grid-gap: 1em;
+    grid-gap: 1.5em;
     font-family: 'Oxygen', sans-serif;
     margin: 0 auto;
     padding: 10px;
-    grid-template-columns: 100px 1fr 100px;
-    grid-template-rows: 100px 100px minmax(600px, 1fr) 100px;
-    grid-template-areas: "header header header" "description description description" ". center ."
-        "footer footer footer";
-}
-
-#results {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-family: 'Oxygen', sans-serif;
-	color: #303030;
-    background: #ffffffcc;
-	border-radius: 4px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-}
-
-.results-back {
-    display: flex;
-	flex-direction: row;
-	justify-content: center;
-	margin: 40px;
-}
-
-#results-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.pic {
-    width: 400px;
-    height: 300px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-    margin: 40px;
-    object-fit: cover;
-}
-
-.where {
-    margin: 40px;
-}
-
-.text-entry {
-    margin: 10px 40px;
-}
-
-.entry {
-    background: #3b4a6b66;
+    grid-template-rows: auto auto 1fr auto;
+    place-items: center;
 }
 
 .headline {
-    font-size: 44px;
+    font-size: clamp(1.5em, 5vw, 2em);
+    font-weight: bold;
     text-transform: uppercase;
-    grid-area: header;
     justify-self: center;
     align-self: center;
 }
 
 .description {
-    grid-area: description;
     justify-self: center;
     align-self: center;
+    font-size: clamp(1em, 2vw, 1.2em);
+    text-align: center;
+    padding: 0 25px;
 }
 
 .main {
-    grid-area: center;
     display: flex;
     flex-direction: column;
+    width: clamp(0ch, 80%, 100ch);
+    height: 100%;
+    min-height: 500px;
     background-image: linear-gradient(to bottom, #fff, #ffffff00), url(../../../images/beach.jpg);
     background-size: cover;
+    background-position: center center;
     border-radius: 10px;
     color: #303030;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
-.search {
+#main-form {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: flex-end;
-	margin: 40px;
-	padding: 30px;
+    margin: 20px 0 35px 0;
 }
 
-.footer {
-    grid-area: footer;
-    justify-self: center;
-    align-self: center;
+.form-items {
+    flex: 0 1 250px;
+    margin: 0 15px;
 }
 
-/*  Basic Styling To Override Default For Basic HTML Elements */
 label {
     display: block;
-    margin: 0 0 0 20px;
+    width: 100%;
+    margin: 10px 0;
 }
 
 input {
     display: block;
     height: 55px;
-    width: 300px;
     background: #ffffff;
     color: #303030;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Oxygen', sans-serif;
     border: none;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
-    margin: 15px 20px 0 20px;
     padding: 5px 10px 5px 10px;
+    margin: 0;
+    width: 100%;
 }
 
 button {
-    width: 200px;
+    width: 100%;
     height: 55px;
     background: #d44d5c;
     color: #ffffff;
     font-size: 20px;
     font-family: 'Oxygen', sans-serif;
     border: none;
-    margin: 15px 20px 0 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
+    margin: 36px 0 0 0;
 }
+
+.results-back {
+    display: none;
+	flex-direction: row;
+	justify-content: center;
+    margin: 0 auto 40px auto;
+    width: 90%;
+}
+
+#results {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Oxygen', sans-serif;
+	color: #303030;
+    background: #ffffffcc;
+	border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    padding: 20px 0;
+}
+
+#results-text {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(0.9em, 2vw, 1em);
+}
+
+.results-items {
+    flex: 1 1 300px;
+    margin: 0 20px;
+}
+
+.pic {
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.where {
+    margin: 20px 10px 5px 10px;
+}
+
+.text-entry {
+    margin: 5px 10px;
+}
+
+.entry {
+    background: #3b4a6b66;
+}
+
+.footer {
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    font-size: 18px;
+}
+
+/*  Basic Styling To Override Default For Basic HTML Elements */
+
 
 button:hover {
     background-color: #ff5467;
@@ -153,10 +172,6 @@ button:hover {
 
 button:active {
     background-color: #f25566;
-}
-
-h1 {
-    font-size: 36px;
 }
 
 textarea {
