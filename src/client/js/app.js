@@ -53,7 +53,6 @@ function performAction(e) {
                     `key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`
                 ).then((weatherDataCurrent) => {
                     const temperature = weatherDataCurrent.data[0].temp;
-                    // console.log(weatherDataCurrent);
                     const weatherDescription = weatherDataCurrent.data[0].weather.description;
                     primaryData.temperature = temperature;
                     primaryData.weatherDescription = weatherDescription;
@@ -74,7 +73,6 @@ function performAction(e) {
             }
             // pixabay API
             await getData(baseURLPixabay, `${destination}&key=${apiKeyPixabay}`).then(async (pictureData) => {
-                // console.log(pictureData);
                 // Pull in an image for the country from Pixabay API when the entered location brings up no results.
                 if (pictureData.totalHits > 0) {
                     const locationPhoto = pictureData.hits[0].webformatURL;
@@ -112,7 +110,7 @@ const getData = async (url, parameters) => {
 };
 
 const updateUI = () => {
-    let resultsBackground = document.getElementById('results');
+    let resultsBackground = document.querySelector('.results-back');
     resultsBackground.style.display = 'flex';
 
     let resultsPic = document.getElementById('results-pic');
