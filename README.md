@@ -2,8 +2,8 @@
 
 ## About
 This is a study project which was created during studying Front-End Developer Nanodegree at Udacity.
-Travel Planner allows user to enter location and date to get information about weather conditions, temperature and days left before the trip.
-User can also see the picture of entered location.
+Travel Planner allows user to enter location and date to get information about weather conditions, temperature, how many days are left before the trip, and the picture of entered location or country.
+User can choose any date from the nearest two weeks starting tomorrow (works in Firefox and Chrome based browsers).
 
 ## Run dev
 ```
@@ -23,14 +23,23 @@ npm test
 ```
 
 ## Technology Stack
-HTML
-CSS
-JavaScript
 
-Webpack
+- HTML
+- SCSS
+- JavaScript
+- Webpack
+- Responsive layout powered by Grid and Flexbox
+
+## Used APIs
+
+- [Geonames](http://www.geonames.org/export/web-services.html)
+- [Weatherbit](https://www.weatherbit.io/api)
+- [Pixabay](https://pixabay.com/api/docs/)
 
 ## Dependencies
+
 This project uses date-fns.
 
-## Extended option
-Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
+## Extended options
+
+If there are no images for the specified city/place, the image of the country is displayed.
