@@ -1,7 +1,4 @@
-import { differenceInDays, parseISO } from 'date-fns';
-import { startOfTomorrow } from 'date-fns';
-import { formatISO } from 'date-fns';
-import { addDays } from 'date-fns';
+import { differenceInDays, parseISO, startOfTomorrow, formatISO, addDays } from 'date-fns';
 
 /* Global Variables */
 let baseURLGeoNames = 'http://api.geonames.org/searchJSON?maxRows=1&username=valeriia&name=';
@@ -16,10 +13,10 @@ let apiKeyPixabay = '6315616-d5cb7351229c7679827eaf034';
 // Object with all data
 let primaryData;
 
-let tomorrow = formatISO(startOfTomorrow(), { representation: 'date' });
-document.querySelector('#departure-date').setAttribute('min', tomorrow);
+let minDate = formatISO(startOfTomorrow(), { representation: 'date' });
+document.querySelector('#departure-date').setAttribute('min', minDate);
 
-let maxDate = formatISO(addDays(parseISO(tomorrow), 14), { representation: 'date' });
+let maxDate = formatISO(addDays(parseISO(minDate), 14), { representation: 'date' });
 document.querySelector('#departure-date').setAttribute('max', maxDate);
 
 function performAction(e) {
