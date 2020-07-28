@@ -70,10 +70,9 @@ function performAction(e) {
                     baseURLWeatherbitDaily,
                     `key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`
                 ).then((weatherDataDaily) => {
-                    console.log(weatherDataDaily);
-                    const temperatureMax = weatherDataDaily.data[0].max_temp;
-                    const temperatureMin = weatherDataDaily.data[0].min_temp;
-                    const weatherDescriptionDaily = weatherDataDaily.data[0].weather.description;
+                    const temperatureMax = weatherDataDaily.data[12].max_temp;
+                    const temperatureMin = weatherDataDaily.data[12].min_temp;
+                    const weatherDescriptionDaily = weatherDataDaily.data[12].weather.description;
                     primaryData.temperatureMax = temperatureMax;
                     primaryData.temperatureMin = temperatureMin;
                     primaryData.weatherDescription = weatherDescriptionDaily;
