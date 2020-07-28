@@ -1,4 +1,7 @@
-import { differenceInDays } from 'date-fns';
+import { differenceInDays, parseISO } from 'date-fns';
+import { startOfTomorrow } from 'date-fns';
+import { formatISO } from 'date-fns';
+import { addDays } from 'date-fns';
 
 /* Global Variables */
 let baseURLGeoNames = 'http://api.geonames.org/searchJSON?maxRows=1&username=valeriia&name=';
@@ -12,6 +15,12 @@ let apiKeyPixabay = '6315616-d5cb7351229c7679827eaf034';
 
 // Object with all data
 let primaryData;
+
+let tomorrow = formatISO(startOfTomorrow(), { representation: 'date' });
+document.querySelector('#departure-date').setAttribute('min', tomorrow);
+
+let maxDate = formatISO(addDays(parseISO(tomorrow), 14), { representation: 'date' });
+document.querySelector('#departure-date').setAttribute('max', maxDate);
 
 function performAction(e) {
     e.preventDefault();
@@ -61,6 +70,7 @@ function performAction(e) {
                     baseURLWeatherbitDaily,
                     `key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`
                 ).then((weatherDataDaily) => {
+                    console.log(weatherDataDaily);
                     const temperatureMax = weatherDataDaily.data[0].max_temp;
                     const temperatureMin = weatherDataDaily.data[0].min_temp;
                     const weatherDescriptionDaily = weatherDataDaily.data[0].weather.description;
