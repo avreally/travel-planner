@@ -89,7 +89,7 @@ input {
     width: 100%;
 }
 
-button {
+#get-info {
     width: 100%;
     height: 55px;
     background: #d44d5c;
@@ -100,6 +100,15 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
     margin: 36px 0 0 0;
+}
+
+#get-info:hover {
+    background-color: #ff5467;
+    cursor: pointer;
+}
+
+#get-info:active {
+    background-color: #f25566;
 }
 
 .results-back {
@@ -162,31 +171,12 @@ button {
     font-size: 18px;
 }
 
-/*  Basic Styling To Override Default For Basic HTML Elements */
-
-
-button:hover {
-    background-color: #ff5467;
-    cursor: pointer;
-}
-
-button:active {
-    background-color: #f25566;
-}
-
-textarea {
-    background: #ffffff;
-    color: #303030;
-    font-size: 20px;
-    font-family: 'Oxygen', sans-serif;
-}
-/* Reset style for HTML element on active to have no border*/
 input:focus,
-select:focus,
-textarea:focus,
 button:focus {
-    outline: none;
+    outline: 0;
+    filter: drop-shadow(0 0 5px #015e75);
 }
+
 /* Style for Placeholder Text*/
 ::placeholder {
     /* Firefox, Chrome, Opera */

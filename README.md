@@ -25,7 +25,7 @@ npm test
 ## Technology Stack
 
 - HTML
-- SCSS
+- SASS
 - JavaScript
 - Webpack
 - Responsive layout powered by Grid and Flexbox
