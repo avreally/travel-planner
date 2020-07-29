@@ -1,4 +1,4 @@
-import { differenceInDays, parseISO, startOfTomorrow, formatISO, addDays } from 'date-fns';
+import { differenceInDays, startOfTomorrow, formatISO, addDays } from 'date-fns';
 
 /* Global Variables */
 let baseURLGeoNames = 'http://api.geonames.org/searchJSON?maxRows=1&username=valeriia&name=';
@@ -15,10 +15,12 @@ let primaryData;
 
 const departureDateElement = document.querySelector('#departure-date');
 
-const minDate = formatISO(startOfTomorrow(), { representation: 'date' });
+const tomorrow = startOfTomorrow();
+
+const minDate = formatISO(tomorrow, { representation: 'date' });
 departureDateElement.setAttribute('min', minDate);
 
-const maxDate = formatISO(addDays(parseISO(minDate), 14), { representation: 'date' });
+const maxDate = formatISO(addDays(tomorrow, 14), { representation: 'date' });
 departureDateElement.setAttribute('max', maxDate);
 
 function performAction(e) {
@@ -49,10 +51,8 @@ function performAction(e) {
     getData(baseURLGeoNames, destination)
         .then(async (allData) => {
             const geoData = allData.geonames[0];
-            const countryName = geoData.countryName;
+            const { countryName, lat, lng } = geoData;
             primaryData.countryName = countryName;
-            const lat = geoData.lat;
-            const lng = geoData.lng;
 
             // Weatherbit API
             if (daysLeft <= 7) {
