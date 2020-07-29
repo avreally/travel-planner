@@ -1,4 +1,4 @@
-import { differenceInDays } from 'date-fns';
+import { differenceInDays, startOfTomorrow, formatISO, addDays } from 'date-fns';
 
 /* Global Variables */
 let baseURLGeoNames = 'http://api.geonames.org/searchJSON?maxRows=1&username=valeriia&name=';
@@ -7,11 +7,21 @@ let baseURLWeatherbitCurrent = 'http://api.weatherbit.io/v2.0/current?';
 let baseURLWeatherbitDaily = 'http://api.weatherbit.io/v2.0/forecast/daily?';
 let apiKeyWeatherbit = '4f64fed98275458e9ed0a797ec81774e';
 
-let baseURLPixabay = 'https://pixabay.com/api/?image_type=photo&category=buildings&q=';
+let baseURLPixabay = 'https://pixabay.com/api/?image_type=photo&category=travel&q=';
 let apiKeyPixabay = '6315616-d5cb7351229c7679827eaf034';
 
 // Object with all data
 let primaryData;
+
+const departureDateElement = document.querySelector('#departure-date');
+
+const tomorrow = startOfTomorrow();
+
+const minDate = formatISO(tomorrow, { representation: 'date' });
+departureDateElement.setAttribute('min', minDate);
+
+const maxDate = formatISO(addDays(tomorrow, 14), { representation: 'date' });
+departureDateElement.setAttribute('max', maxDate);
 
 function performAction(e) {
     e.preventDefault();
@@ -40,10 +50,9 @@ function performAction(e) {
     primaryData.destination = destination;
     getData(baseURLGeoNames, destination)
         .then(async (allData) => {
-            const countryName = allData.geonames[0].countryName;
+            const geoData = allData.geonames[0];
+            const { countryName, lat, lng } = geoData;
             primaryData.countryName = countryName;
-            const lat = allData.geonames[0].lat;
-            const lng = allData.geonames[0].lng;
 
             // Weatherbit API
             if (daysLeft <= 7) {
@@ -51,8 +60,9 @@ function performAction(e) {
                     baseURLWeatherbitCurrent,
                     `key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`
                 ).then((weatherDataCurrent) => {
-                    const temperature = weatherDataCurrent.data[0].temp;
-                    const weatherDescription = weatherDataCurrent.data[0].weather.description;
+                    const currentWeather = weatherDataCurrent.data[0];
+                    const temperature = currentWeather.temp;
+                    const weatherDescription = currentWeather.weather.description;
                     primaryData.temperature = temperature;
                     primaryData.weatherDescription = weatherDescription;
                 });
@@ -61,9 +71,10 @@ function performAction(e) {
                     baseURLWeatherbitDaily,
                     `key=${apiKeyWeatherbit}&lat=${lat}&lon=${lng}`
                 ).then((weatherDataDaily) => {
-                    const temperatureMax = weatherDataDaily.data[0].max_temp;
-                    const temperatureMin = weatherDataDaily.data[0].min_temp;
-                    const weatherDescriptionDaily = weatherDataDaily.data[0].weather.description;
+                    const dailyWeather = weatherDataDaily.data[12];
+                    const temperatureMax = dailyWeather.max_temp;
+                    const temperatureMin = dailyWeather.min_temp;
+                    const weatherDescriptionDaily = dailyWeather.weather.description;
                     primaryData.temperatureMax = temperatureMax;
                     primaryData.temperatureMin = temperatureMin;
                     primaryData.weatherDescription = weatherDescriptionDaily;
@@ -85,7 +96,7 @@ function performAction(e) {
                             const countryPhoto = pictureDataCountry.hits[0].webformatURL;
                             primaryData.pictureURL = countryPhoto;
                         } else {
-                            await getData(baseURLPixabay, `travel&key=${apiKeyPixabay}`).then((pictureDataMock) => {
+                            await getData(baseURLPixabay, `&key=${apiKeyPixabay}`).then((pictureDataMock) => {
                                 const mockPhoto = pictureDataMock.hits[0].webformatURL;
                                 primaryData.pictureURL = mockPhoto;
                             });
