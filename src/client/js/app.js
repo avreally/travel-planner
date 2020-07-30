@@ -1,10 +1,10 @@
 import { differenceInDays, startOfTomorrow, formatISO, addDays } from 'date-fns';
 
 /* Global Variables */
-let baseURLGeoNames = 'http://api.geonames.org/searchJSON?maxRows=1&username=valeriia&name=';
+let baseURLGeoNames = 'https://api.geonames.org/searchJSON?maxRows=1&username=valeriia&name=';
 
-let baseURLWeatherbitCurrent = 'http://api.weatherbit.io/v2.0/current?';
-let baseURLWeatherbitDaily = 'http://api.weatherbit.io/v2.0/forecast/daily?';
+let baseURLWeatherbitCurrent = 'https://api.weatherbit.io/v2.0/current?';
+let baseURLWeatherbitDaily = 'https://api.weatherbit.io/v2.0/forecast/daily?';
 let apiKeyWeatherbit = '4f64fed98275458e9ed0a797ec81774e';
 
 let baseURLPixabay = 'https://pixabay.com/api/?image_type=photo&category=travel&q=';
