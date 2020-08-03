@@ -19,7 +19,7 @@ module.exports = {
                 use: [ 'style-loader', 'css-loader', 'sass-loader' ]
             },
             {
-                test: /\.(png|jpg)$/,
+                test: /\.(png|svg|jpg)$/,
                 loader: 'file-loader'
             }
         ]
@@ -28,7 +28,8 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: './src/client/views/index.html',
             filename: './index.html',
-            title: 'Progressive Web Application'
+            title: 'Progressive Web Application',
+            favicon: './src/client/views/favicon.svg'
         }),
         // new WorkboxPlugin.GenerateSW({
         //     // these options encourage the ServiceWorkers to get in there fast
