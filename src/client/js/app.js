@@ -124,13 +124,23 @@ const getData = async (url, parameters) => {
 
 const updateUI = () => {
     let resultsBackground = document.querySelector('.results-back');
-    resultsBackground.style.display = 'flex';
+    resultsBackground.style.display = 'none';
+
+    let picture = document.createElement('img');
+    picture.setAttribute('src', primaryData.pictureURL);
+
+    picture.onload = function() {
+        resultsBackground.style.display = 'flex';
+        searchButton.disabled = false;
+    };
+
+    picture.onerror = function() {
+        picture.setAttribute('src', '../../../images/beach-default.jpg');
+    };
 
     let resultsPic = document.getElementById('results-pic');
     resultsPic.innerHTML = '';
 
-    let picture = document.createElement('img');
-    picture.setAttribute('src', primaryData.pictureURL);
     picture.classList.add('pic');
     resultsPic.appendChild(picture);
 
@@ -173,8 +183,6 @@ const updateUI = () => {
     weatherDescription.classList.add('text-entry');
     weatherDescription.innerText = 'Weather conditions: ' + primaryData.weatherDescription;
     resultsText.appendChild(weatherDescription);
-
-    searchButton.disabled = false;
 };
 
 // Export performAction to index.js
