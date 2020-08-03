@@ -23,6 +23,8 @@ departureDateElement.setAttribute('min', minDate);
 const maxDate = formatISO(addDays(tomorrow, 14), { representation: 'date' });
 departureDateElement.setAttribute('max', maxDate);
 
+const searchButton = document.getElementById('get-info');
+
 function performAction(e) {
     e.preventDefault();
     primaryData = {
@@ -36,6 +38,8 @@ function performAction(e) {
         daysLeft: '',
         pictureURL: ''
     };
+
+    searchButton.disabled = true;
 
     // Countdown
     const departureDate = document.getElementById('departure-date').value;
@@ -169,6 +173,8 @@ const updateUI = () => {
     weatherDescription.classList.add('text-entry');
     weatherDescription.innerText = 'Weather conditions: ' + primaryData.weatherDescription;
     resultsText.appendChild(weatherDescription);
+
+    searchButton.disabled = false;
 };
 
 // Export performAction to index.js

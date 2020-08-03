@@ -111,6 +111,12 @@ input {
     background-color: #f25566;
 }
 
+#get-info:disabled {
+    background-color: #e48993;
+    cursor: default;
+}
+
+
 .results-back {
     display: none;
 	flex-direction: row;
