@@ -124,12 +124,13 @@ const getData = async (url, parameters) => {
 
 const updateUI = () => {
     let resultsBackground = document.querySelector('.results-back');
-    resultsBackground.style.display = 'none';
+    resultsBackground.style.visibility = 'hidden';
 
     let picture = document.createElement('img');
     picture.setAttribute('src', primaryData.pictureURL);
 
     picture.onload = function() {
+        resultsBackground.style.visibility = 'visible';
         resultsBackground.style.display = 'flex';
         searchButton.disabled = false;
     };
