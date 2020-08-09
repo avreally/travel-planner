@@ -144,6 +144,7 @@ input {
     display: flex;
     flex-direction: column;
     font-size: clamp(0.9em, 2vw, 1em);
+    padding: 20px 0;
 }
 
 .results-items {
@@ -152,17 +153,13 @@ input {
 }
 
 .pic {
-    height: 100%;
+    height: clamp(100px, 40vw, 250px);
     width: 100%;
     border-radius: 4px;
     object-fit: cover;
 }
 
-.where {
-    margin: 20px 10px 5px 10px;
-}
-
-.text-entry {
+.text-entry, .where {
     margin: 5px 10px;
 }
 
