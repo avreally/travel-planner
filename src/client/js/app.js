@@ -23,6 +23,8 @@ departureDateElement.setAttribute('min', minDate);
 const maxDate = formatISO(addDays(tomorrow, 14), { representation: 'date' });
 departureDateElement.setAttribute('max', maxDate);
 
+const searchButton = document.getElementById('get-info');
+
 function performAction(e) {
     e.preventDefault();
     primaryData = {
@@ -36,6 +38,8 @@ function performAction(e) {
         daysLeft: '',
         pictureURL: ''
     };
+
+    searchButton.disabled = true;
 
     // Countdown
     const departureDate = document.getElementById('departure-date').value;
@@ -120,13 +124,24 @@ const getData = async (url, parameters) => {
 
 const updateUI = () => {
     let resultsBackground = document.querySelector('.results-back');
-    resultsBackground.style.display = 'flex';
+    resultsBackground.style.visibility = 'hidden';
+
+    let picture = document.createElement('img');
+    picture.setAttribute('src', primaryData.pictureURL);
+
+    picture.onload = function() {
+        resultsBackground.style.visibility = 'visible';
+        resultsBackground.style.display = 'flex';
+        searchButton.disabled = false;
+    };
+
+    picture.onerror = function() {
+        picture.setAttribute('src', '../../../images/beach-default.jpg');
+    };
 
     let resultsPic = document.getElementById('results-pic');
     resultsPic.innerHTML = '';
 
-    let picture = document.createElement('img');
-    picture.setAttribute('src', primaryData.pictureURL);
     picture.classList.add('pic');
     resultsPic.appendChild(picture);
 
