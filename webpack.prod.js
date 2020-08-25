@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const WorkboxPlugin = require('workbox-webpack-plugin')
 
 module.exports = {
     mode: 'production',
@@ -32,12 +31,6 @@ module.exports = {
             title: 'Progressive Web Application',
             favicon: './src/client/views/favicon.svg'
         }),
-        // new WorkboxPlugin.GenerateSW({
-        //     // these options encourage the ServiceWorkers to get in there fast
-        //     // and not allow any straggling "old" SWs to hang around
-        //     clientsClaim: true,
-        //     skipWaiting: true,
-        // }),
         new CleanWebpackPlugin({
             // Simulate the removal of files
             dry: true,
