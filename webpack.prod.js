@@ -20,7 +20,10 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg)$/,
-                loader: 'file-loader'
+                loader: 'file-loader',
+                options: {
+                    esModule: false
+                }
             }
         ]
     },
