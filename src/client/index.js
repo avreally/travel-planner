@@ -1,4 +1,4 @@
-import './styles/style.scss';
+import './styles/style.css';
 import { performAction } from './js/app';
 
 // Moved from app.js
